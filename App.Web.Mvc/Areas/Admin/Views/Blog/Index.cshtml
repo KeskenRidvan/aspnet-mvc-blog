@@ -1,55 +1,55 @@
 ﻿@model IEnumerable<App.Business.Dtos.Post.ViewPostDto>
 @{
-  ViewData["Title"] = "Blog Admin Page";
+	ViewData["Title"] = "Blog Admin Page";
 }
 <div class="container">
-  <div class="row mb-2">
-    <div class="col">
-      <a class="btn btn-primary" asp-controller="Blog" asp-action="Create"><i class="bi-plus-circle"></i> Yeni Gönderi Ekle</a>
-    </div>
-  </div>
-  <div class="row mb-2">
-    <div class="col">
-      <div class="card">
-        <div class="card-header">
-          <h5>Gönderi Listesi</h5>
-        </div>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Değiştir/Sil/Post Yorumları/Post Resimleri</th>
-                <th scope="col"><label asp-for="@Model.FirstOrDefault().PostTitle ?? " Gönderi Başlığı""></label></th>
-                <th scope="col"><label asp-for="@Model.FirstOrDefault().PostContext ?? " Gönderi İçeriği""></label></th>
-                <th scope="col"> Kategori Adı</th>                
-              </tr>
-            </thead>
-            <tbody>
-              @foreach (var (item, i) in Model.Select((item, i) => (item, i)))
-              {
-                <tr>
-                  <th scope="row">@(i + 1)</th>
-                  <th>
-                    <a class="m-1" asp-controller="Blog" asp-action="Edit" asp-route-id="@item.Id"><i class="bi-pencil-square text-success"></i></a>
-                    <a class="m-1" asp-controller="Blog" asp-action="Delete" asp-route-id="@item.Id"><i class="bi-trash text-danger"></i></a>
-                    <a class="m-1" asp-controller="PostComment" asp-action="Index" asp-route-id="@item.Id"><i class="bi-chat-square-dots text-warning"></i></a>
-                    <a class="m-1" asp-controller="PostImage" asp-action="Index" asp-route-id="@item.Id"><i class="bi-file-earmark-image text-secondary"></i></a>
-                  </th>
-                  <td>@item.PostTitle</td>
-                  <td>@item.PostContext</td>
-                  <td>
-                    @if (item.CategoryPosts != null)
-                    {
-                      @String.Join(", ", item.CategoryPosts.Select(p => p.Category.Name).ToArray())
-                    }
-                  </td>
-                </tr>
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="row mb-2">
+		<div class="col">
+			<a class="btn btn-primary" asp-controller="Blog" asp-action="Create"><i class="bi-plus-circle"></i> Yeni Gönderi Ekle</a>
+		</div>
+	</div>
+	<div class="row mb-2">
+		<div class="col">
+			<div class="card">
+				<div class="card-header">
+					<h5>Gönderi Listesi</h5>
+				</div>
+				<div class="card-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Değiştir/Sil/Post Yorumları/Post Resimleri</th>
+								<th scope="col"><label asp-for="@Model.FirstOrDefault().PostTitle ?? " Gönderi Başlığı""></label></th>
+								<th scope="col"><label asp-for="@Model.FirstOrDefault().PostContext ?? " Gönderi İçeriği""></label></th>
+								<th scope="col"> Kategori Adı</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var (item, i) in Model.Select((item, i) => (item, i)))
+							{
+								<tr>
+									<th scope="row">@(i + 1)</th>
+									<th>
+										<a class="m-1" asp-controller="Blog" asp-action="Edit" asp-route-id="@item.Id"><i class="bi-pencil-square text-success"></i></a>
+										<a class="m-1" asp-controller="Blog" asp-action="Delete" asp-route-id="@item.Id"><i class="bi-trash text-danger"></i></a>
+										<a class="m-1" asp-controller="PostComment" asp-action="Index" asp-route-id="@item.Id"><i class="bi-chat-square-dots text-warning"></i></a>
+										<a class="m-1" asp-controller="PostImage" asp-action="Index" asp-route-id="@item.Id"><i class="bi-file-earmark-image text-secondary"></i></a>
+									</th>
+									<td>@item.PostTitle</td>
+									<td>@item.PostContext</td>
+									<td>
+										@if (item.CategoryPosts != null)
+										{
+											@String.Join(", ", item.CategoryPosts.Select(p => p.Category.Name).ToArray())
+										}
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

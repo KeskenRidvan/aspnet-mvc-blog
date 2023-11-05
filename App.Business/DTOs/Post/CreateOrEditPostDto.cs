@@ -22,7 +22,7 @@ namespace App.Business.Dtos.Post
 		public PostImage? PostImage { get; set; }
 
 		public IEnumerable<CategoryPost>? CategoryPosts { get; set; }
-		public IEnumerable<Category>? Categories { get; set; }
+		public IEnumerable<Persistence.Data.Entity.Category>? Categories { get; set; }
 
 		[DisplayName("Kategoriler")]
 		public List<int>? selectedCategoryIds { get; set; }

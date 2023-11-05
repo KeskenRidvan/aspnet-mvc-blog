@@ -16,6 +16,6 @@ namespace App.Persistence.Data.Entity
 		[MinLength(10, ErrorMessage = "{0} en az {1} karakter olabilir!")]
 		public string Name { get; set; }
 
-		public List<CategoryPost> CategoryPosts { get; set; }
+		public List<CategoryPost>? CategoryPosts { get; set; }
 	}
 }

@@ -2,54 +2,54 @@
 
 <div class="container">
 
-  <div class="row mb-2">
-    <div class="col">
-      <div class="card">
-        <div class="card-header">
-          <h5>Gönderi Oluştur</h5>
-          @*<div asp-validation-summary="All"></div>*@
-        </div>
-        <div class="card-body">
-          <form asp-controller="Blog" asp-action="Create" method="post" class="d-flex align-items-center">
-            <div class="container">
+	<div class="row mb-2">
+		<div class="col">
+			<div class="card">
+				<div class="card-header">
+					<h5>Gönderi Oluştur</h5>
+					@*<div asp-validation-summary="All"></div>*@
+				</div>
+				<div class="card-body">
+					<form asp-controller="Blog" asp-action="Create" method="post" class="d-flex align-items-center">
+						<div class="container">
 
-              <div class="row mb-4">
-                <div class="col">
-                  <label asp-for="PostTitle" class="mb-2"></label>
-                  <input type="text" asp-for="PostTitle" class="form-control" placeholder="Ad" />
-                  <span asp-validation-for="PostTitle" class="text-danger"></span>
-                </div>
-              </div>
+							<div class="row mb-4">
+								<div class="col">
+									<label asp-for="PostTitle" class="mb-2"></label>
+									<input type="text" asp-for="PostTitle" class="form-control" placeholder="Ad" />
+									<span asp-validation-for="PostTitle" class="text-danger"></span>
+								</div>
+							</div>
 
-              <div class="row mb-4">
-                <div class="col">
-                  <label asp-for="PostContext" class="mb-2"></label>
-                  <textarea asp-for="PostContext" class="form-control" placeholder="Tanım"></textarea>
-                  <span asp-validation-for="PostContext" class="text-danger"></span>
-                </div>
-              </div>
+							<div class="row mb-4">
+								<div class="col">
+									<label asp-for="PostContext" class="mb-2"></label>
+									<textarea asp-for="PostContext" class="form-control" placeholder="Tanım"></textarea>
+									<span asp-validation-for="PostContext" class="text-danger"></span>
+								</div>
+							</div>
 
-              <div class="row mb-4">
-                <div class="col">
-                  <label class="control-label mb-2" asp-for="selectedCategoryIds"></label>
-                  <select asp-for="selectedCategoryIds" multiple="multiple" class="form-control" asp-items="@(new MultiSelectList(Model.Categories, "Id", "CategoryName", Model.selectedCategoryIds))">
-                    @*<option value="">-- Kategori Seç --</option>*@
-                  </select>
-                  <span asp-validation-for="selectedCategoryIds" class="text-danger"></span>
-                </div>
-              </div>
+							<div class="row mb-4">
+								<div class="col">
+									<label class="control-label mb-2" asp-for="selectedCategoryIds"></label>
+									<select asp-for="selectedCategoryIds" multiple="multiple" class="form-control" asp-items="@(new MultiSelectList(Model.Categories, "Id", "CategoryName", Model.selectedCategoryIds))">
+										@*<option value="">-- Kategori Seç --</option>*@
+									</select>
+									<span asp-validation-for="selectedCategoryIds" class="text-danger"></span>
+								</div>
+							</div>
 
-              <div class="row mb-2">
-                <div class="col">
-                  <button type="submit" class="btn btn-warning" style="width:150px">Oluştur</button>
-                  <a asp-controller="Blog" asp-action="Index" class="btn btn-primary" style="width:150px">Listeye Dön</a>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+							<div class="row mb-2">
+								<div class="col">
+									<button type="submit" class="btn btn-warning" style="width:150px">Oluştur</button>
+									<a asp-controller="Blog" asp-action="Index" class="btn btn-primary" style="width:150px">Listeye Dön</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </div>

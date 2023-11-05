@@ -13,7 +13,6 @@ namespace App.Business.Dtos.PostComment
 		public string Comment { get; set; }
 
 		public int PostId { get; set; }
-
 		public Persistence.Data.Entity.Post? Post { get; set; }
 	}
 }

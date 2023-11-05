@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace App.Web.Mvc.Migrations
+namespace App.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class _1001_initial : Migration
+    public partial class _1001_intial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -38,19 +38,6 @@ namespace App.Web.Mvc.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pages", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Settings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DarkMode = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Settings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,6 +72,26 @@ namespace App.Web.Mvc.Migrations
                     table.PrimaryKey("PK_Posts", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Posts_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Settings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DarkMode = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Settings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Settings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -197,6 +204,15 @@ namespace App.Web.Mvc.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Settings",
+                columns: new[] { "Id", "DarkMode", "UserId" },
+                values: new object[,]
+                {
+                    { 1, true, 1 },
+                    { 2, false, 2 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "CategoryPosts",
                 columns: new[] { "CategoryId", "PostId" },
                 values: new object[,]
@@ -234,6 +250,11 @@ namespace App.Web.Mvc.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_UserId",
                 table: "Posts",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Settings_UserId",
+                table: "Settings",
                 column: "UserId");
         }
 

@@ -1,4 +1,5 @@
-﻿using App.Business.Services.Abstract;
+﻿using App.Business.Dtos.Setting;
+using App.Business.Services.Abstract;
 using App.Persistence.Data;
 using App.Persistence.Data.Entity;
 
@@ -25,9 +26,22 @@ namespace App.Business.Services.Concrete
 			return _context.Settings.Select(e => e);
 		}
 
+		public IEnumerable<ViewSettingDto> GetAllByUserNames()
+		{
+			var viewSettingDtos = new List<ViewSettingDto>();
+
+			var settings = _context.Settings.Select(e => e).ToList();
+
+			foreach (var item in settings)
+			{
+				viewSettingDtos.Add(new ViewSettingDto { Id = item.Id, DarkMode = item.DarkMode, UserName = _context.Users.FirstOrDefault(a => a.Id == item.Id).Name });
+			}
+			return viewSettingDtos;
+		}
+
 		public Setting GetById(int id)
 		{
-			return _context.Settings.Find(id);
+			return _context.Settings.FirstOrDefault(a => a.Id == id);
 		}
 
 		public void Insert(Setting entity)

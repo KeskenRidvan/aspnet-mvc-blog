@@ -25,6 +25,8 @@ namespace App.Web.Mvc
 			builder.Services.AddScoped<IUserService, UserManager>();
 			builder.Services.AddScoped<ISettingService, SettingManager>();
 			builder.Services.AddScoped<IPageService, PageManager>();
+			builder.Services.AddScoped<IPostImageService, PostImageManager>();
+			builder.Services.AddScoped<IPostCommentService, PostCommentManager>();
 
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
 

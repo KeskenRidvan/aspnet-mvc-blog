@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace App.Web.Mvc.Migrations
+namespace App.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231105154956_1001_initial")]
-    partial class _1001_initial
+    [Migration("20231105230501_1001_intial")]
+    partial class _1001_intial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace App.Web.Mvc.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.Category", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,7 +65,7 @@ namespace App.Web.Mvc.Migrations
                         });
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.CategoryPost", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.CategoryPost", b =>
                 {
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -97,7 +97,7 @@ namespace App.Web.Mvc.Migrations
                         });
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.Page", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.Page", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -140,7 +140,7 @@ namespace App.Web.Mvc.Migrations
                         });
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.Post", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -197,7 +197,7 @@ namespace App.Web.Mvc.Migrations
                         });
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.PostComment", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.PostComment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -220,7 +220,7 @@ namespace App.Web.Mvc.Migrations
                     b.ToTable("PostComments");
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.PostImage", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.PostImage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -262,7 +262,7 @@ namespace App.Web.Mvc.Migrations
                         });
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.Setting", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.Setting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -273,12 +273,31 @@ namespace App.Web.Mvc.Migrations
                     b.Property<bool>("DarkMode")
                         .HasColumnType("bit");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Settings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DarkMode = true,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DarkMode = false,
+                            UserId = 2
+                        });
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.User", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -335,15 +354,15 @@ namespace App.Web.Mvc.Migrations
                         });
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.CategoryPost", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.CategoryPost", b =>
                 {
-                    b.HasOne("App.Web.Mvc.Data.Entitiy.Category", "Category")
+                    b.HasOne("App.Persistence.Data.Entity.Category", "Category")
                         .WithMany("CategoryPosts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("App.Web.Mvc.Data.Entitiy.Post", "Post")
+                    b.HasOne("App.Persistence.Data.Entity.Post", "Post")
                         .WithMany("CategoryPosts")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -354,9 +373,9 @@ namespace App.Web.Mvc.Migrations
                     b.Navigation("Post");
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.Post", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.Post", b =>
                 {
-                    b.HasOne("App.Web.Mvc.Data.Entitiy.User", "User")
+                    b.HasOne("App.Persistence.Data.Entity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -365,9 +384,9 @@ namespace App.Web.Mvc.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.PostComment", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.PostComment", b =>
                 {
-                    b.HasOne("App.Web.Mvc.Data.Entitiy.Post", "Post")
+                    b.HasOne("App.Persistence.Data.Entity.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -376,9 +395,9 @@ namespace App.Web.Mvc.Migrations
                     b.Navigation("Post");
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.PostImage", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.PostImage", b =>
                 {
-                    b.HasOne("App.Web.Mvc.Data.Entitiy.Post", "Post")
+                    b.HasOne("App.Persistence.Data.Entity.Post", "Post")
                         .WithMany("Images")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -387,12 +406,23 @@ namespace App.Web.Mvc.Migrations
                     b.Navigation("Post");
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.Category", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.Setting", b =>
+                {
+                    b.HasOne("App.Persistence.Data.Entity.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("App.Persistence.Data.Entity.Category", b =>
                 {
                     b.Navigation("CategoryPosts");
                 });
 
-            modelBuilder.Entity("App.Web.Mvc.Data.Entitiy.Post", b =>
+            modelBuilder.Entity("App.Persistence.Data.Entity.Post", b =>
                 {
                     b.Navigation("CategoryPosts");
 

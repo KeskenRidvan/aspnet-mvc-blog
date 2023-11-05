@@ -1,4 +1,5 @@
 ﻿using App.Business.Dtos.Post;
+using App.Business.Dtos.PostComment;
 using App.Business.Dtos.Setting;
 using App.Business.Dtos.User;
 using App.Business.DTOs.Category;
@@ -41,6 +42,10 @@ namespace App.Business
 			CreateMap<SettingDto, Setting>().ReverseMap();
 			CreateMap<ViewSettingDto, Setting>().ReverseMap();
 			CreateMap<CreateOrEditSettingDto, Setting>().ReverseMap();
+			#endregion
+
+			#region PostComment
+			CreateMap<PostCommentCreateOrEditDto, PostComment>().ReverseMap();
 			#endregion
 		}
 	}

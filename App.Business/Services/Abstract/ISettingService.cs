@@ -1,4 +1,5 @@
-﻿using App.Persistence.Data.Entity;
+﻿using App.Business.Dtos.Setting;
+using App.Persistence.Data.Entity;
 
 namespace App.Business.Services.Abstract
 {
@@ -10,5 +11,6 @@ namespace App.Business.Services.Abstract
 		void Update(Setting entity);
 		void DeleteById(int id);
 		void SaveChanges();
+		IEnumerable<ViewSettingDto> GetAllByUserNames();
 	}
 }
