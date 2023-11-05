@@ -1,0 +1,44 @@
+﻿@model IEnumerable<App.Persistence.Data.Entity.Category>
+@{
+  ViewData["Title"] = "Category Admin Page";
+}
+<div class="container">
+  <div class="row mb-2">
+    <div class="col">
+      <a class="btn btn-primary" asp-controller="Category" asp-action="Create"><i class="bi-plus-circle"></i> Yeni Ürün Kategorisi Ekle</a>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Ürün Kategori Listesi</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Değiştir/Sil</th>
+                <th scope="col"><label asp-for="@Model.FirstOrDefault().Name ?? " Kategori Adı""></label></th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach (var (item, i) in Model.Select((item, i) => (item, i)))
+              {
+                <tr>
+                  <th scope="row">@(i + 1)</th>
+                  <th>
+                    <a class="m-2" asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id"><i class="bi-pencil-square text-success"></i></a>
+                    <a class="m-2" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id"><i class="bi-trash text-danger"></i></a>
+                  </th>
+                  <td>@item.Name</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

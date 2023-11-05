@@ -1,0 +1,43 @@
+﻿@model App.Persistence.Data.Entity.Page
+
+<div class="container">
+
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Sayfa Oluştur</h5>
+          @*<div asp-validation-summary="All"></div>*@
+        </div>
+        <div class="card-body">
+          <form asp-controller="Page" asp-action="Create" method="post" class="d-flex align-items-center">
+            <div class="container">
+
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="Title" class="mb-2"></label>
+                  <input type="text" asp-for="Title" class="form-control" placeholder="Başlık" />
+                  <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="Context" class="mb-2"></label>
+                  <input type="text" asp-for="Context" class="form-control" placeholder="İçerik" />
+                  <span asp-validation-for="Context" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <button type="submit" class="btn btn-warning" style="width:150px">Oluştur</button>
+                  <a asp-controller="Page" asp-action="Index" class="btn btn-primary" style="width:150px">Listeye Dön</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

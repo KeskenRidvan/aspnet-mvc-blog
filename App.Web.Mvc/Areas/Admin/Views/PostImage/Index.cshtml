@@ -1,0 +1,60 @@
+﻿@model App.Persistence.Data.Entity.PostImage
+@{
+  ViewData["Title"] = "Page Admin Page";
+}
+<div class="container">
+  <div class="row mb-2">
+    <div class="col">
+      
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Resim</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th scope="col">Değiştir/Sil/Ekle</th>
+                <th scope="col"><label asp-for="@Model.ImageUrl ?? " Resim""></label></th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  
+                  <th>
+                  <a class="m-2" asp-controller="PostImage" asp-action="Edit" asp-route-id="@TempData["postId"]"><i class="bi-pencil-square text-success"></i></a>
+                  <a class="m-2" asp-controller="PostImage" asp-action="Delete" asp-route-id="@TempData["postId"]"><i class="bi-trash text-danger"></i></a>
+                  @if(Model.ImageUrl == "")
+                  {
+                    <a class="m-2" asp-controller="PostImage" asp-action="Create" asp-route-id="@TempData["postId"]"><i class="bi-plus-circle text-warning"></i></a>
+                  }
+                </th>
+                <td>
+                  @if (Model.ImageUrl != "")
+                  {
+                    <img src="~/@Model.ImageUrl" class="img-fluid w-100">
+                  }
+                  
+                  </td>
+                @* <td hidden><layer>@item.PostId</layer></td> *@
+                </tr>
+              
+            </tbody>
+
+          </table>
+          <div class="justify-content-end" style="display:flex">
+            <a asp-controller="Blog" asp-action="Index" class="btn btn-secondary" style="width:150px">Listeye Dön</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

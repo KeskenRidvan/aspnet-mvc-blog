@@ -1,0 +1,40 @@
+﻿@model App.Persistence.Data.Entity.PostImage
+
+<div class="container">
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Resim Yükle</h5>
+          @*<div asp-validation-summary="All"></div>*@
+        </div>
+        <div class="card-body">
+          <form asp-controller="PostImage" asp-action="Create" method="post" enctype="multipart/form-data" class="d-flex align-items-center">
+            <div class="container">
+
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="ImageUrl" class="mb-2"></label>
+                  <input type="file" asp-for="ImageUrl" class="form-control" />
+                </div>
+              </div>
+              <div class="row mb-4" hidden>
+                <div class="col">
+                  <label asp-for="PostId" class="mb-2"></label>
+                  <input type="text" asp-for="PostId" class="form-control" placeholder="@TempData["postId"]" />
+                  <span asp-validation-for="PostId" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <button type="submit" class="btn btn-warning" style="width:150px">Oluştur</button>
+                  <a asp-controller="PostImage" asp-action="Index" asp-route-id="@TempData["postId"]" class="btn btn-secondary" style="width:150px">Geri Dön</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

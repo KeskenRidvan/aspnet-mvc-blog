@@ -1,0 +1,51 @@
+﻿@model IEnumerable<App.Persistence.Data.Entity.PostComment>
+@{
+  ViewData["Title"] = "Page Admin Page";
+}
+<div class="container">
+  <div class="row mb-2">
+    <div class="col">
+      <a class="btn btn-primary" asp-controller="PostComment" asp-action="Create" asp-route-id="@TempData["postId"]"><i class="bi-plus-circle"></i> Yorum Ekle</a>      
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Yorum Listesi</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Değiştir/Sil</th>
+                <th scope="col"><label asp-for="@Model.FirstOrDefault().Comment ?? " Yorum""></label></th>
+                <th hidden scope="col"><label asp-for="@Model.FirstOrDefault().PostId ?? " Yorum""></label></th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach (var (item, i) in Model.Select((item, i) => (item, i)))
+              {
+                <tr>
+                  <th scope="row">@(i + 1)</th>
+                  <th>
+                    <a class="m-2" asp-controller="PostComment" asp-action="Edit" asp-route-id="@item.Id"><i class="bi-pencil-square text-success"></i></a>
+                    <a class="m-2" asp-controller="PostComment" asp-action="Delete" asp-route-id="@item.Id"><i class="bi-trash text-danger"></i></a>
+                  </th>
+                  <td>@item.Comment</td>
+                  <td hidden><layer>@item.PostId</layer></td>
+                </tr>
+              }
+            </tbody>
+            
+          </table>
+          <div class="justify-content-end" style="display:flex">
+            <a asp-controller="Blog" asp-action="Index" class="btn btn-secondary" style="width:150px">Listeye Dön</a>
+          </div>
+          
+        </div>
+      </div>
+    </div>    
+  </div>
+</div>

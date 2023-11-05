@@ -1,0 +1,43 @@
+﻿@model App.Business.Dtos.PostComment.PostCommentCreateOrEditDto
+
+<div class="container">
+
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Yorum Değiştir</h5>
+          @*<div asp-validation-summary="All"></div>*@
+        </div>
+        <div class="card-body">
+          <form asp-controller="PostComment" asp-action="Edit" method="post" class="d-flex align-items-center">
+            <div class="container">
+
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="Comment" class="mb-2"></label>
+                  <input type="text" asp-for="Comment" class="form-control" placeholder="Yorum" />
+                  <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="row mb-4" hidden>
+                <div class="col">
+                  <label asp-for="PostId" class="mb-2"></label>
+                  <input type="text" asp-for="PostId" class="form-control" placeholder="@Model.PostId" />
+                  <span asp-validation-for="PostId" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <button type="submit" class="btn btn-warning" style="width:150px">Değiştir</button>
+                  <a asp-controller="PostComment" asp-action="Index" asp-route-id="@Model.PostId" class="btn btn-primary" style="width:150px">Listeye Dön</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

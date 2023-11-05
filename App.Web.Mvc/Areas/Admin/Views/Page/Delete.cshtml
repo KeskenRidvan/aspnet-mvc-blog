@@ -1,0 +1,39 @@
+﻿@model App.Persistence.Data.Entity.Page
+
+<div class="container">
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Sayfa Silme</h5>
+          @*<div asp-validation-summary="All"></div>*@
+        </div>
+        <div class="card-body">
+          <form asp-controller="Page" asp-action="Delete" method="post" class="d-flex align-items-center">
+            <div class="container">
+
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="Title" class="mb-2"></label>
+                  <div class="container bg-secondary text-white rounded p-2">@Model.Title</div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="Context" class="mb-2"></label>
+                  <div class="container bg-secondary text-white rounded p-2">@Model.Context</div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <button type="submit" class="btn btn-danger" style="width:150px">Sil</button>
+                  <a asp-controller="Page" asp-action="Index" class="btn btn-primary" style="width:150px">Listeye Dön</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

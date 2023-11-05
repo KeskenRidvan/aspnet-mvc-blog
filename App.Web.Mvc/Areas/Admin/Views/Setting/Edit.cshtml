@@ -1,0 +1,40 @@
+﻿@model App.Persistence.Data.Entity.Setting
+
+<div class="container">
+
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Ayar Değiştir</h5>
+          @*<div asp-validation-summary="All"></div>*@
+        </div>
+        <div class="card-body">
+          <form asp-controller="Setting" asp-action="Edit" method="post" class="d-flex align-items-center">
+            <div class="container">
+
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="DarkMode" class="mb-2"></label>
+                  <input type="checkbox" asp-for="DarkMode"/>
+                  <span asp-validation-for="DarkMode" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col">               
+                  <input type="text" asp-for="Id" hidden/>               
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <button type="submit" class="btn btn-warning" style="width:150px">Değiştir</button>
+                  <a asp-controller="Setting" asp-action="Index" class="btn btn-primary" style="width:150px">Listeye Dön</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

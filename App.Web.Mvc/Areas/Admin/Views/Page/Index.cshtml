@@ -1,0 +1,46 @@
+﻿@model IEnumerable<App.Persistence.Data.Entity.Page>
+@{
+  ViewData["Title"] = "Page Admin Page";
+}
+<div class="container">
+  <div class="row mb-2">
+    <div class="col">
+      <a class="btn btn-primary" asp-controller="Page" asp-action="Create"><i class="bi-plus-circle"></i> Yeni Sayfa Ekle</a>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Sayfa Listesi</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Değiştir/Sil</th>
+                <th scope="col"><label asp-for="@Model.FirstOrDefault().Title ?? " Sayfa Başlıği""></label></th>
+                <th scope="col"><label asp-for="@Model.FirstOrDefault().Context ?? " Sayfa İçeriği""></label></th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach (var (item, i) in Model.Select((item, i) => (item, i)))
+              {
+                <tr>
+                  <th scope="row">@(i + 1)</th>
+                  <th>
+                    <a class="m-2" asp-controller="Page" asp-action="Edit" asp-route-id="@item.Id"><i class="bi-pencil-square text-success"></i></a>
+                    <a class="m-2" asp-controller="Page" asp-action="Delete" asp-route-id="@item.Id"><i class="bi-trash text-danger"></i></a>
+                  </th>
+                  <td>@item.Title</td>
+                  <td ><label>@item.Context</label></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

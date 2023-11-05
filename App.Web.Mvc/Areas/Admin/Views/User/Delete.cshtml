@@ -1,0 +1,46 @@
+﻿@model App.Persistence.Data.Entity.User
+
+<div class="container">
+  <div class="row mb-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Kullanıcı Silme</h5>
+          @*<div asp-validation-summary="All"></div>*@
+        </div>
+        <div class="card-body">
+          <form asp-controller="User" asp-action="Delete" method="post" class="d-flex align-items-center">
+            <div class="container">
+
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="Name" class="mb-2"></label>
+                  <div class="container bg-secondary text-white rounded p-2">@Model.Name</div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="Surname" class="mb-2"></label>
+                  <div class="container bg-secondary text-white rounded p-2">@Model.Surname</div>
+                </div>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col">
+                  <label asp-for="Email" class="mb-2"></label>
+                  <div class="container bg-secondary text-white rounded p-2">@Model.Email</div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <button type="submit" class="btn btn-danger" style="width:150px">Sil</button>
+                  <a asp-controller="User" asp-action="Index" class="btn btn-primary" style="width:150px">Listeye Dön</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
