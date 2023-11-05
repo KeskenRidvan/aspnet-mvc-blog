@@ -28,7 +28,7 @@ namespace App.Web.Mvc.Data.Entitiy
 		public string Email { get; set; }
 
 		[Required(ErrorMessage = "{0} boş geçilemez.")]
-		[DisplayName("Kullanıcı E-Mail")]
+		[DisplayName("Kullanıcı Şifresi")]
 		[PasswordPropertyText]
 		public string Password { get; set; }
 	}
