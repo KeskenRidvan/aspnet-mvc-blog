@@ -1,5 +1,4 @@
-﻿using App.Web.Mvc.Models;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,7 +6,6 @@ namespace App.Web.Mvc.Data.Entitiy
 {
 	public class Post
 	{
-
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
@@ -27,9 +25,11 @@ namespace App.Web.Mvc.Data.Entitiy
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
 		public DateTime Date { get; set; }
 
-		public List<CategoryPost> CategoryPosts { get; set; }
-
 		public int UserId { get; set; }
 		public User User { get; set; }
+
+		public IEnumerable<CategoryPost> CategoryPosts { get; set; }
+		public IEnumerable<PostImage> Images { get; set; }
+		public IEnumerable<PostComment> Comments { get; set; }
 	}
 }

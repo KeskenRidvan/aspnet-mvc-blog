@@ -12,6 +12,10 @@ namespace App.Web.Mvc.Data
 		}
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			modelBuilder.Entity<CategoryPost>().HasKey(bc => new { bc.CategoryId, bc.PostId });
+			modelBuilder.Entity<CategoryPost>().HasOne(bc => bc.Category).WithMany(b => b.CategoryPosts).HasForeignKey(bc => bc.CategoryId);
+			modelBuilder.Entity<CategoryPost>().HasOne(bc => bc.Post).WithMany(c => c.CategoryPosts).HasForeignKey(bc => bc.PostId);
+
 			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 			base.OnModelCreating(modelBuilder);
 		}

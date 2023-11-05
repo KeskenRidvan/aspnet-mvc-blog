@@ -1,0 +1,48 @@
+﻿@model App.Web.Mvc.Models.NavbarViewModel
+
+<header class="header-top bg-grey justify-content-center">
+	<nav class="navbar navbar-expand-lg navigation-2 navigation ">
+		<a class="navbar-brand text-uppercase d-lg-none" asp-controller="Home" asp-action="Index">
+			<img src="../images/logo.png" alt="" class="img-fluid">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="ti-menu"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbar-collapse">
+			<ul id="menu" class="menu navbar-nav mx-auto">
+				@*Home*@
+				<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+				@*End Home*@
+
+				@*Categories*@
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Categories
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						@foreach (var item in Model.Categories)
+						{
+							<a class="dropdown-item" asp-controller="Category" asp-action="Index">@item.Name</a>
+						}
+					</div>
+				</li>
+				@*End Categories*@
+
+				@*Pages*@
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Pages
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						@foreach (var item in Model.Pages)
+						{
+							<a class="dropdown-item" asp-controller="Page" asp-action="Detail">@item.Title</a>
+						}
+					</div>
+				</li>
+				@*End Pages*@
+			</ul>
+		</div>
+
+	</nav>
+</header>
