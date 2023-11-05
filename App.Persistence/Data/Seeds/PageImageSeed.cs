@@ -1,8 +1,8 @@
-﻿using App.Web.Mvc.Data.Entitiy;
+﻿using App.Persistence.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace App.Web.Mvc.Data.Seeds
+namespace App.Persistence.Data.Seeds
 {
 	public class PostImageSeed : IEntityTypeConfiguration<PostImage>
 	{

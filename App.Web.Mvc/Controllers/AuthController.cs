@@ -1,5 +1,5 @@
-﻿using App.Web.Mvc.Data;
-using App.Web.Mvc.Data.Entitiy;
+﻿using App.Persistence.Data;
+using App.Persistence.Data.Entity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Mvc.Controllers

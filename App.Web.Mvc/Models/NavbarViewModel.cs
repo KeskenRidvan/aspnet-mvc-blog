@@ -1,4 +1,4 @@
-﻿using App.Web.Mvc.Data.Entitiy;
+﻿using App.Persistence.Data.Entity;
 
 namespace App.Web.Mvc.Models
 {

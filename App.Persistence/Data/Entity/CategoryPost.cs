@@ -1,4 +1,4 @@
-﻿namespace App.Web.Mvc.Data.Entitiy
+﻿namespace App.Persistence.Data.Entity
 {
 	public class CategoryPost
 	{

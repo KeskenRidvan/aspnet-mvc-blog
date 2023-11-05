@@ -1,8 +1,9 @@
-﻿using App.Web.Mvc.Data.Entitiy;
+﻿using App.Persistence.Data.Entity;
+using App.Persistence.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace App.Web.Mvc.Data
+namespace App.Persistence.Data
 {
 	public class AppDbContext : DbContext
 	{

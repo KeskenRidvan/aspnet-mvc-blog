@@ -1,4 +1,4 @@
-﻿using App.Web.Mvc.Data;
+﻿using App.Persistence.Data;
 using App.Web.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

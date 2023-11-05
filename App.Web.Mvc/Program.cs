@@ -1,4 +1,4 @@
-using App.Web.Mvc.Data;
+using App.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Web.Mvc

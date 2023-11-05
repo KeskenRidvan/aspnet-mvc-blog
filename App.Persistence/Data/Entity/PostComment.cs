@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace App.Web.Mvc.Data.Entitiy
+namespace App.Persistence.Data.Entity
 {
 	public class PostComment
 	{
