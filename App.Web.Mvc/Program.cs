@@ -1,3 +1,6 @@
+using App.Business;
+using App.Business.Services.Abstract;
+using App.Business.Services.Concrete;
 using App.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +19,14 @@ namespace App.Web.Mvc
 			{
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DBConStr"));
 			});
+
+			builder.Services.AddScoped<IPostService, PostManager>();
+			builder.Services.AddScoped<ICategoryService, CategoryManager>();
+			builder.Services.AddScoped<IUserService, UserManager>();
+			builder.Services.AddScoped<ISettingService, SettingManager>();
+			builder.Services.AddScoped<IPageService, PageManager>();
+
+			builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 			var app = builder.Build();
 

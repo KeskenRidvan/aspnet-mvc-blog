@@ -1,9 +1,10 @@
-﻿using App.Persistence.Data;
+﻿using App.Business.Services.Abstract;
+using App.Persistence.Data;
 using App.Persistence.Data.Entity;
 
 namespace App.Business.Services.Concrete
 {
-	internal class PostManager
+	public class PostManager : IPostService
 	{
 		private readonly AppDbContext _context;
 

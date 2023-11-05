@@ -1,9 +1,10 @@
-﻿using App.Persistence.Data;
+﻿using App.Business.Services.Abstract;
+using App.Persistence.Data;
 using App.Persistence.Data.Entity;
 
 namespace App.Business.Services.Concrete
 {
-	public class SettingManager
+	public class SettingManager : ISettingService
 	{
 		private readonly AppDbContext _context;
 
