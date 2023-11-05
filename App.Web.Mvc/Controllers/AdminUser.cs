@@ -1,15 +1,12 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Mvc.Controllers
 {
-	public class HomeController : Controller
+	public class AdminUser : Controller
 	{
 		public IActionResult Index()
 		{
 			return View();
 		}
-
-
 	}
 }
