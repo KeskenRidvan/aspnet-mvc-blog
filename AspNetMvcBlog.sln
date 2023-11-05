@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Web.Mvc", "App.Web.Mvc\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Persistence", "App.Persistence\App.Persistence.csproj", "{4FD9A85B-784D-4290-A148-0DE59BFB7CF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Business", "App.Business\App.Business.csproj", "{1824ADB8-D56B-41B4-9C1B-D3664EB00B21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4FD9A85B-784D-4290-A148-0DE59BFB7CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FD9A85B-784D-4290-A148-0DE59BFB7CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FD9A85B-784D-4290-A148-0DE59BFB7CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1824ADB8-D56B-41B4-9C1B-D3664EB00B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1824ADB8-D56B-41B4-9C1B-D3664EB00B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1824ADB8-D56B-41B4-9C1B-D3664EB00B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1824ADB8-D56B-41B4-9C1B-D3664EB00B21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

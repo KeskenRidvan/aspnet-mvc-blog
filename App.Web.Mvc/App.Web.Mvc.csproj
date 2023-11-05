@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\App.Business\App.Business.csproj" />
     <ProjectReference Include="..\App.Persistence\App.Persistence.csproj" />
   </ItemGroup>
 

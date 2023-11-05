@@ -1,4 +1,4 @@
-﻿using App.Persistence.Data;
+﻿using App.Business.Services.Abstract;
 using App.Persistence.Data.Entity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,33 +7,36 @@ namespace App.Web.Mvc.Controllers
 	public class AuthController : Controller
 	{
 
-		private readonly AppDbContext _context;
-
-		public AuthController(AppDbContext context)
+		//private readonly AppDbContext _db;
+		private readonly IUserService _userService;
+		public AuthController(IUserService userService)
 		{
-			_context = context;
+			_userService = userService;
 		}
 
-		[HttpGet]
 		public IActionResult Register()
 		{
 			User user = new User();
-			return View();
+
+			return View(user);
 		}
 
 		[HttpPost]
-		public IActionResult Register(User model)
+		public IActionResult Register(User user)
 		{
-			if (model == null)
-				return View(model);
+			if (user == null)
+			{
+				return View();
+			}
+			if (ModelState.IsValid)
+			{
+				_userService.Insert(user);
+				_userService.SaveChanges();
 
-			if (!ModelState.IsValid)
-				return View(model);
+				return RedirectToAction("Index", "Home");
+			}
 
-			_context.Add(model);
-			_context.SaveChanges();
-
-			return RedirectToAction(controllerName: "Home", actionName: "Index");
+			return View(user);
 		}
 
 		public IActionResult Login(string redirectUrl)
@@ -44,5 +47,6 @@ namespace App.Web.Mvc.Controllers
 		{
 			return View();
 		}
+
 	}
 }
